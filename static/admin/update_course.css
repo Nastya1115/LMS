@@ -1,0 +1,123 @@
+.title {
+    font-size: 35px;
+}
+
+.title > .name {
+    font-weight: 600;
+}
+
+.title > .id {
+    float: right;
+}
+
+.main-container {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    justify-self: center;
+    width: 90vw;
+}
+
+.a {
+    width: 30%;
+}
+
+.b {
+    flex-grow: 1;
+}
+
+.nav-tabs {
+    border-bottom: none !important;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.nav-tabs .nav-link {
+    background-color: transparent;
+    color: #6d7a59;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-tabs .nav-link:hover {
+    background-color: transparent;
+    color: #6d7a59;
+    border: none;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #6d7a59;
+    color: #17140B;
+    font-weight: 600;
+}
+
+.inner-container {
+    padding: 15px;
+}
+
+.inner-container a, .inner-container span {
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.inner-container a:hover {
+    letter-spacing: 1px;
+}
+
+.inner-container > .left {
+    font-weight: 500;
+}
+
+.inner-container > .right {
+    float: right;
+    margin-right: 1%;
+}
+
+.contains-text {
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.new-link {
+    float: right;
+    transition: all 0.3s ease;
+}
+
+.new-link:hover {
+    font-size: 17.5px;
+}
+
+.tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tags-list > .tag {
+    padding: 5px 15px 5px 15px;
+    font-size: 18px;
+    border-radius: 5px;
+    background-color: #6d7a59;
+    color: black;
+}
+
+.tasks-list {
+    display: flex;
+    flex-direction: column;
+    padding-left: 35px;
+    transition: all 0.3s ease;
+}
+
+.tags-list a:hover {
+    font-size: 15px;
+}
+
+@media (max-width: 1000px) {
+    .main-container {
+        flex-direction: column;
+    }
+
+    .a {
+        width: 100%;
+    }
+}

@@ -1,0 +1,137 @@
+.t-form-style textarea,
+.c-form-style textarea,
+.n-form-style input {
+    border: none;
+    resize: none;
+}
+
+.t-form-style textarea {
+    border-radius: 2px;
+    width: 100%;
+    height: 80vh;
+    padding: 10px;
+}
+
+.c-form-style textarea {
+    border-radius: 5px;
+    width:100%;
+}
+
+.n-form-style {
+    width: 30%;
+}
+
+.n-form-style input {
+    border-radius: 5px;
+    width: 60%;
+}
+
+.t-form-style textarea:focus,
+.n-form-style input:focus,
+.c-form-style textarea:focus {
+    outline: none;
+}
+
+.t-form-style ::-webkit-scrollbar,
+.c-form-style ::-webkit-scrollbar {
+    width: 5px;
+}
+
+.t-form-style ::-webkit-scrollbar-thumb,
+.c-form-style ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+}
+
+.task-desc::-webkit-scrollbar {
+    width: 7px;
+    height: 8px;
+}
+  
+.task-desc::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+}
+
+.i-form-style input {
+    border: none;
+}
+
+.task-title {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.task-desc {
+    max-height: 70%;
+    overflow: auto;
+}
+
+.a {
+    display: flex;
+    gap: 30px;
+    padding: 40px;
+}
+
+.b {
+    width: 60%;
+}
+
+.c {
+    height: 80vh;
+    width: 40%;
+}
+
+.task-desc img {
+    justify-self: center;
+    max-width: 500px;
+    display: block;
+    margin: 0 auto;
+}
+
+.green-btn, .red-btn {
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    align-content: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+    transition: all 0.3s ease;
+    padding: 3px 15px 3px 15px;
+}
+
+.green-btn {
+    background-color: #6d7a59;
+}
+
+.green-btn:hover {
+    letter-spacing: 0.7px;
+    background-color: #626e50;
+}
+
+.red-btn {
+    background-color: #79584c;
+}
+
+.red-btn:hover {
+    letter-spacing: 0.7px;
+    background-color: #65483d;
+}
+
+@media (max-width: 1000px) {
+    .a {
+        flex-direction: column;
+    }
+
+    .b {
+        width: 100%;
+    }
+
+    .c { 
+        width: 100%;
+        height: 40vh;
+    }
+
+    .t-form-style textarea {
+        height: 50vh;
+    }
+}

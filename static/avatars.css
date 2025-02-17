@@ -1,0 +1,32 @@
+.profile-avatar, .navbar-avatar, .update-profile-avatar, .group-avatar {
+    border-radius: 50%;
+    background-color: black;
+    justify-self: center;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.profile-avatar {
+    width: 250px;
+    height: 250px;
+    z-index: 2;
+    position: relative;
+}
+
+.navbar-avatar {
+    width: 30px;
+    height: 30px;
+    align-self: center;
+    margin-left: 5px;
+}
+
+.update-profile-avatar {
+    width: 150px;
+    height: 150px;
+}
+
+.group-avatar {
+    width: 100px;
+    height: 100px;
+}

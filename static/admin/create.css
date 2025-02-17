@@ -1,0 +1,85 @@
+.form-style {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.form-style input,
+.form-style textarea,
+.form-style select, 
+.form-style input[type="file"] {
+    border: none;
+    resize: none;
+    padding: 5px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.form-style input:focus, .form-style textarea:focus {
+    outline: none;
+}
+
+.form-style ::-webkit-scrollbar {
+    width: 3px;
+}
+
+.form-style ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+}
+
+.sumbit-btn {
+    border: none;
+    border-radius: 5px;
+    justify-self: center;
+    text-align: center;
+    align-content: center;
+    background-color: #6d7a59;
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+    width: 100%;
+    height: 35px;
+    transition: all 0.3s ease;
+}
+
+.sumbit-btn:hover {
+    letter-spacing: 1px;
+    background-color: #626e50;
+}
+
+.form-style select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%2317140B" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    padding-right: 30px;
+}
+
+.form-style input[type="file"] {
+    position: relative;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form-style input[type="file"]::-webkit-file-upload-button {
+    background-color: #6d7a59;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-style input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #626e50;
+    letter-spacing: 1px;
+}
+
+.form-style select:focus,
+.form-style input[type="file"]:focus {
+    outline: none;
+}

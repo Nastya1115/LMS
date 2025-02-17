@@ -1,0 +1,94 @@
+.nav-tabs {
+    border-bottom: none !important;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.nav-tabs .nav-link {
+    background-color: transparent;
+    color: #6d7a59;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.nav-tabs .nav-link:hover {
+    background-color: transparent;
+    color: #6d7a59;
+    border: none;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #6d7a59;
+    color: #17140B;
+    font-weight: 600;
+}
+
+.students-list {
+    padding: 15px;
+}
+
+.students-list a {
+    font-size: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.title-container {
+    width: 90%;
+    justify-self: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.a {
+    width: 30%;
+    justify-self: center;
+}
+
+.b {
+    flex-grow: 1;
+    justify-self: center;
+}
+
+.lessons-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 15px;
+}
+
+.lesson-container {
+    border-radius: 5px;
+    min-width: 200px;
+    min-height: 50px;
+    padding: 10px;
+}
+
+.lesson-container > .title-c {
+    display: flex;
+    gap: 50px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-c > .title {
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.title-c a {
+    float: right;
+    transition: all 0.3s ease;
+}
+
+.tasks-list li {
+    margin-bottom: 3px;
+}
+
+.tasks-list a:hover,
+.title-c a:hover,
+.students-list a:hover {
+    letter-spacing: 0.7px;
+}

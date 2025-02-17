@@ -1,0 +1,110 @@
+.arrow {
+    font-size: 50px;
+    font-weight: 700;
+    align-self: center;
+}
+
+.title {
+    font-size: 50px;
+    font-weight: 800;
+    justify-self: center;
+    text-align: center;
+}
+
+.form-style {
+    justify-self: center;
+}
+
+.form-inner-container-username,
+.form-inner-container-bio {
+    display: flex;
+    background-color: #6d7a59;
+    color: black;
+    border-radius: 10px;
+    width: 40vw;
+}
+
+.form-inner-text {
+    padding: 10px;
+    font-size: 20px;
+    width: 20%;
+}
+
+.form-inner-container-username div,
+.form-inner-container-bio div {
+    flex-grow: 1;
+}
+
+.form-inner-container-username input,
+.form-inner-container-bio textarea,
+.form-inner-container-file input[type="file"] {
+    font-size: 20px;
+    height: 100%;
+    width: 100%;
+    resize: none;
+    overflow: hidden;
+    padding: 10px;
+    border: none;
+}
+
+.form-inner-container-username input:focus,
+.form-inner-container-bio textarea:focus,
+.form-inner-container-file input[type="file"]:focus {
+    outline: none;
+}
+
+.form-inner-container-file {
+    display: flex;
+    background-color: #6d7a59;
+    color: black;
+    border-radius: 10px;
+    width: 40vw;
+    align-items: center;
+}
+
+.form-inner-text {
+    padding: 10px;
+    font-size: 20px;
+    width: 20%;
+}
+
+.form-inner-container-file div {
+    flex-grow: 1;
+}
+
+.form-inner-container-file input[type="file"]::-webkit-file-upload-button {
+    background-color: #6d7a59;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-inner-container-file input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #626e50;
+    letter-spacing: 1px;
+}
+
+.sumbit-btn {
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    align-content: center;
+    background-color: #6d7a59;
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+    width: 50%;
+    height: 35px;
+    margin-left: 25%;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.sumbit-btn:hover {
+    letter-spacing: 1.5px;
+    background-color: #626e50;
+}

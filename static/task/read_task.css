@@ -1,0 +1,48 @@
+.task-title {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.task-desc {
+    max-height: 70%;
+    overflow: auto;
+}
+
+.a {
+    display: flex;
+    gap: 30px;
+    padding: 40px;
+}
+
+.b {
+    width: 60%;
+    border-radius: 10px;
+}
+
+.c {
+    height: 80vh;
+    width: 40%;
+}
+
+.task-desc img {
+    justify-self: center;
+    max-width: 500px;
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 1000px) {
+    .a {
+        flex-direction: column;
+    }
+
+    .b {
+        width: 100%;
+        height: 30vh;
+    }
+
+    .c { 
+        width: 100%;
+        height: 40vh;
+    }
+}

@@ -1,0 +1,42 @@
+.nav-base {
+    width: 100vw;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: center;
+}
+
+.nav-logo {
+    font-weight: 700;
+    font-size: 35px;
+    margin-right: 30px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.nav-logo:hover {
+    font-size: 35.5px;
+}
+
+.nav-text {
+    font-weight: 500;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.nav-profile {
+    font-weight: 600;
+    font-size: 25px;
+    margin-left: 30px;
+    transition: all 0.3s ease;
+    display: flex;
+    border: none;
+    background-color: transparent;
+}
+
+.nav-profile:hover {
+    font-size: 25.5px;
+}
