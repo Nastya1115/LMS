@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {%include 'admin/dynamic/d_admin_panel.html'%}
+    
+    <p class="global-text title">
+        Welcome to Admin Panel
+    </p>
+
+    <div class="global-divider" style="width: 60%;justify-self: center;"></div><br>
+
+    <div style="display: flex; justify-content: center;">
+    <ul class="nav nav-tabs nav-pills flex-column" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="module-courses-tab" data-bs-toggle="tab" data-bs-target="#module-courses" type="button" role="tab" aria-controls="module-courses" aria-selected="true">courses</button>
+        </li>
+        <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tags-tab" data-bs-toggle="tab" data-bs-target="#tags" type="button" role="tab" aria-controls="tags" aria-selected="false">tags</button>
+        </li>
+        <li class="nav-item" role="presentation">
+        <button class="nav-link" id="groups-tab" data-bs-toggle="tab" data-bs-target="#groups" type="button" role="tab" aria-controls="groups" aria-selected="false">groups</button>
+        </li>
+        <li class="nav-item" role="presentation">
+        <button class="nav-link" id="users-tab" data-bs-toggle="tab" data-bs-target="#users" type="button" role="tab" aria-controls="users" aria-selected="false">users</button>
+        </li>
+        <li class="nav-item" role="presentation">
+        <button class="nav-link" id="coursesrequests-tab" data-bs-toggle="tab" data-bs-target="#coursesrequests" type="button" role="tab" aria-controls="coursesrequests" aria-selected="false">requests</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="news-tab" data-bs-toggle="tab" data-bs-target="#news" type="button" role="tab" aria-controls="news" aria-selected="false">news</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent" style="width: 80%;">
+        <!-- NAV-TABS: TAB1 -->
+        <div class="tab-pane fade show active" id="module-courses" role="tabpanel" aria-labelledby="module-courses-tab">
+            <div class='c-container a'>
+                <a href="{% url 'admin_panel' %}" class="global-text tab-menu button">All courses</a>
+                <form method="get" action="{% url 'admin_panel' %}" class="search-form">
+                <input type="text" name="course_search" placeholder="Search course">
+                <button type="submit" class="global-text"><i class="fas fa-search"></i></button>
+                </form>
+                <a href="{% url 'new_course' %}" class="global-text tab-menu button">Add new course +</a>
+            </div>
+            <br>
+            <div class='c-container b'>
+                {%for course in courses%}
+                <div style="display: flex;">
+                <div class="id-circle">{{course.id}}</div>
+                <div class="item-rect">
+                <a href="{% url 'update_course' course.pk %}" class="global-text item-main-link">{{course.name}}</a>
+                <a href="{% url 'delete_course' course.pk %}" class="global-text item-secondary-link"><i class="fa-solid fa-trash"></i></a>
+                </div>
+                </div>
+                <br>
+                {%endfor%}
+            </div>
+        </div>
+        <!-- NAV-TABS: TAB2 -->
+        <div class="tab-pane fade" id="tags" role="tabpanel" aria-labelledby="tags-tab">
+            <div class='c-container a'>
+                <a href="{% url 'admin_panel' %}" class="global-text tab-menu button">All tags</a>
+                <form method="get" action="{% url 'admin_panel' %}" class="search-form">
+                    <input type="text" name="tag_search" placeholder="Search tag">
+                    <button type="submit" class="global-text"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            <br>
+            <div class='c-container b'>
+                {%for tag in tags%}
+                    <div style="display: flex;">
+                    <div class="id-circle">{{tag.id}}</div>
+                    <div class="item-rect">
+                    <span class="global-text item-main-link">{{tag.name}}</span>
+                    <a href="{% url 'update_tag' tag.pk %}" class="global-text item-secondary-link"><i class="fa-solid fa-pencil"></i></a>
+                    <a href="{% url 'delete_tag' tag.pk %}" class="global-text item-secondary-link"><i class="fa-solid fa-trash"></i></a>
+                    </div>
+                    </div>
+                    <br>
+                {%endfor%}
+            </div>
+        </div>
+        <!-- NAV-TABS: TAB3 -->
+        <div class="tab-pane fade" id="groups" role="tabpanel" aria-labelledby="groups-tab">
+            <div class='c-container a'>
+                <a href="{% url 'admin_panel' %}" class="global-text tab-menu button">All groups</a>
+                <form method="get" action="{% url 'admin_panel' %}" class="search-form">
+                    <input type="text" name="group_search" placeholder="Search group">
+                    <button type="submit" class="global-text"><i class="fas fa-search"></i></button>
+                </form>
+                <a href="{% url 'new_group' 0 %}" class="global-text tab-menu button">Add new group</a>
+            </div>
+            <br>
+            <div class='c-container b'>
+                {%for group in groups%}
+                    <div style="display: flex;">
+                    <div class="id-circle">{{group.id}}</div>
+                    <div class="item-rect">
+                    <a href="{% url 'update_group' group.pk %}" class="global-text item-main-link">{{group.name}}</a>
+                    <a href="{% url 'delete_group' group.pk %}" class="global-text item-secondary-link"><i class="fa-solid fa-trash"></i></a>
+                    </div>
+                    </div>
+                    <br>
+                {%endfor%}
+            </div>
+        </div>
+        <!-- NAV-TABS: TAB4 -->
+        <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
+            <div class='c-container a'>
+                <a href="{% url 'admin_panel' %}" class="global-text tab-menu button">All users</a>
+                <form method="get" action="{% url 'admin_panel' %}" class="search-form">
+                    <input type="text" name="user_search" placeholder="Search user">
+                    <button type="submit" class="global-text"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            <br>
+            <div class='c-container b'>
+                {%for l_user in users%}
+                    <div style="display: flex;">
+                    <div class="id-circle">{{l_user.id}}</div>
+                    <div class="item-rect">
+                    <a href="{% url 'profile' l_user.pk %}" class="global-text item-main-link">
+                        {% if "admin" in l_user.groups.all|join:", " %}
+                        <i class="fas fa-crown" style="font-size: 20px;"></i> 
+                        {% elif "teacher" in l_user.groups.all|join:", " %}
+                        <i class="fas fa-chalkboard-user" style="font-size: 20px;"></i> 
+                        {%endif%}
+                        {{l_user.username}}
+                    </a>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#modal{{l_user.id}}" class="global-text item-secondary-link">
+                        <i class="fa-solid fa-ban"></i>
+                    </button>
+                    <div class="modal fade" id="modal{{l_user.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content modal-dynamic">
+                    <br>
+                    <h2 class="global-text" style="text-align: center;">Ban {{l_user.username}}?</h2>
+                    <div style="display: flex;padding: 30px;justify-content: space-evenly;">
+                    <button type="button" data-bs-dismiss="modal" class="cancel-btn">cancel</button>
+                    <a href="{% url 'ban_user' l_user.pk %}" class="ban-btn">ban</a>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    <a href="{%url 'make_admin' l_user.pk %}" class="global-text item-secondary-link"><i class="fas fa-crown" style="font-size: 20px;"></i></a>
+                    <a href="{%url 'make_teacher' l_user.pk %}" class="global-text item-secondary-link"><i class="fas fa-chalkboard-user" style="font-size: 20px;"></i></a>
+                    <a href="{%url 'make_student' l_user.pk %}" class="global-text item-secondary-link"><i class="fas fa-user" style="font-size: 20px;"></i></a>
+                    </div>
+                    </div>
+                    <br>
+                {%endfor%}
+            </div>
+        </div>
+        <!-- NAV-TABS: TAB5 -->
+        <div class="tab-pane fade show" id="coursesrequests" role="tabpanel" aria-labelledby="coursesrequests-tab">
+            <div class='c-container a'>
+                <a href="{% url 'admin_panel' %}" class="global-text tab-menu button">All requests</a>
+            </div>
+            <br>
+            <div class='c-container b'>
+                {%for courserequest in courses_requests%}
+                <div style="display: flex;">
+                <div class="id-circle">{{courserequest.id}}</div>
+                <div class="item-rect">
+                <span class="global-text item-main-link">{{courserequest.user.username}}, {{courserequest.course.name}}: {{courserequest.email}}</span>
+                <a href="{% url 'delete_course_request' courserequest.pk %}" class="global-text item-secondary-link"><i class="fa-solid fa-trash"></i></a>
+                </div>
+                </div>
+                <br>
+                {%endfor%}
+            </div>
+        </div>
+        <!-- NAV-TABS: TAB6 -->
+        <div class="tab-pane fade" id="news" role="tabpanel" aria-labelledby="news-tab">
+            <div class='c-container a'>
+                <a href="{% url 'admin_panel' %}" class="global-text tab-menu button">All news</a>
+                <a href="{% url 'new_new' %}" class="global-text tab-menu button">Add new new</a>
+            </div>
+            <br>
+            <div class='c-container b'>
+                {%for new in news%}
+                    <div style="display: flex;">
+                    <div class="id-circle">{{new.id}}</div>
+                    <div class="item-rect">
+                    <a href="{% url 'update_new' new.pk %}" class="global-text item-main-link">{{new.title}}</a>
+                    <a href="{% url 'delete_new' new.pk %}" class="global-text item-secondary-link"><i class="fa-solid fa-trash"></i></a>
+                    </div>
+                    </div>
+                    <br>
+                {%endfor%}
+            </div>
+        </div>
+        
+    </div>
+    </div>
+    <br>
+
+{%endblock%}

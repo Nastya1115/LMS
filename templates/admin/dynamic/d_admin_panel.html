@@ -1,0 +1,61 @@
+{%load static%}
+<link rel="stylesheet" href="{% static 'admin/panel.css' %}">
+<style>
+{%if user.theme%}
+
+.modal-dynamic {
+    background-color: #101010;
+}
+
+.item-rect {
+    background-color: #222223;
+}
+
+.id-circle {
+    box-shadow: 0 0 0 6px #2b2b2c;
+}
+
+.search-form input{
+    background-color: #49494a;
+    color: #d0d0d4;
+}
+
+.search-form input::placeholder{
+    color: #2b2b2c;
+}
+
+.nav-tabs {
+    background-color: #2b2b2c;
+    box-shadow: 0 4px 10px #00000079, 0 0 10px #00000079;
+}
+
+{%else%}
+
+.modal-dynamic {
+    background-color: #F7F0E6;
+}
+
+.item-rect {
+    background-color: #ede4d6;
+}
+
+.id-circle {
+    box-shadow: 0 0 0 6px #faf5eb;
+}
+
+.search-form input{
+    background-color: #ede4d6;
+    color: #17140B;
+}
+
+.search-form input::placeholder{
+    color: #645f4e;
+}
+
+.nav-tabs {
+    background-color: #faf5eb;
+    box-shadow: 0 4px 10px #bab1a479, 0 0 10px #bab1a479;
+}
+
+{%endif%}
+</style>

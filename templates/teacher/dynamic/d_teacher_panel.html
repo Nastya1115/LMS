@@ -1,0 +1,43 @@
+{%load static%}
+<link rel="stylesheet" href="{% static 'teacher/teacher_panel.css' %}">
+<style>
+{%if user.theme%}
+
+.search-form input{
+    background-color: #49494a;
+    color: #d0d0d4;
+}
+
+.search-form input::placeholder{
+    color: #2b2b2c;
+}
+
+.group-container a {
+    box-shadow: 0 0 0 6px #2b2b2c;
+}
+
+.group-container {
+    background-color: #222223;
+}
+
+{%else%}
+
+.search-form input{
+    background-color: #ede4d6;
+    color: black;
+}
+
+.search-form input::placeholder{
+    color: #645f4e;
+}
+
+.group-container a {
+    box-shadow: 0 0 0 6px #faf5eb;
+}
+
+.group-container {
+    background-color: #ede4d6;
+}
+
+{%endif%}
+</style>

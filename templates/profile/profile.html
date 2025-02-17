@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your profile</title>
+    {%load static%}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'avatars.css' %}">
+    <link rel="stylesheet" href="{% static 'profile/profile.css' %}">
+</head>
+<body>
+
+    {% include 'dynamic/dmain.html' %}
+    {% include 'profile/dprofile.html' %}
+
+    <div class="nav">
+        <a class='global-text back-btn' href="{% url 'main' %}">back on main page</a>
+        <a class='global-text theme-btn' href="{% url 'change_theme' %}"><i class="fas fa-sun"></i></a>
+    </div>
+
+    <br><br>
+    <div class="profile-avatar" style="background-image: url('{{selected_user.avatar.url}}');"></div>
+    <div class="c-container card">
+    {%if selected_user == user %}
+    <a href="{% url 'update_profile' selected_user.pk%}" class="edit-btn"><i class="fas fa-pencil"></i></a>
+    {%endif%}
+    <p style="text-align: center;margin-top: 70px;">
+        <span class="global-text username">
+            {% if "admin" in selected_user.groups.all|join:", " %}
+            <i class="fas fa-crown" style="font-size: 30px;"></i>
+            {% elif "teacher" in selected_user.groups.all|join:", " %}
+            <i class="fas fa-chalkboard-user"></i>
+            {%endif%}
+            {{selected_user.username}}
+        </span>
+        <br><br>
+        <span class="global-text bio">{{selected_user.bio}}</span>
+    </p>
+    <br><div class="global-divider" style="width: 80%;"></div><br>
+    {%if groups%}
+    <div style="flex-wrap: wrap;display: flex;justify-self: center;width: 80%;gap: 30px;justify-content: center;">  
+    {%for group in groups%}
+    {% if selected_user == user %}
+    <a href="{%url 'course_view' group.course.pk group.pk%}" style="text-decoration: none;">
+    <div class="course-link">
+        <h1 class="global-text">{{group.course}}</h1>
+        <h3 class="global-text">{{group.name}}</h3>
+    </div>
+    </a>
+    {% else %}
+    <div class="group-container">
+        <h1 class="global-text">{{group.course}}</h1>
+        <h3 class="global-text">{{group.name}}</h3>
+    </div>
+    {% endif %}
+    {%endfor%}
+    {%else%}
+    <p class="global-text" style="text-align: center;">this user doesn't attend any course</p>
+    {%endif%}
+    </div>
+    <br>
+    </div>
+    <br>
+
+</body>
+</html>

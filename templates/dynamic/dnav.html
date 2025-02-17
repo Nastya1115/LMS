@@ -1,0 +1,60 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'navbar.css' %}">
+<link rel="stylesheet" href="{% static 'avatars.css' %}">
+
+<style>
+    /** DARK THEME **/
+    {%if user.theme%}
+    .nav-base {
+        background-color: #101010; 
+        box-shadow: 0 5px 6px 0 #00000079;
+    }
+    
+    .nav-logo {
+        color: #d0d0d4;
+    }
+
+    .nav-logo:hover {
+    color: #d0d0d4;
+    }
+
+    .nav-text {
+    color: #616164;
+    }
+
+    .nav-text:hover {
+        color: #2b2b2c;
+    }
+
+    .nav-profile {
+        color: #d0d0d4;
+    }
+    /** LIGHT THEME **/
+    {%else%}
+    .nav-base {
+        background-color: #F7F0E6; 
+        box-shadow: 0 5px 6px 0 #bab1a479;
+    }
+
+    .nav-logo {
+        color: #17140B;
+    }
+
+    .nav-logo:hover {
+    color: #17140B;
+    }
+
+    .nav-text {
+    color: #645f4e;
+    }
+
+    .nav-text:hover {
+        color: #17140B;
+    }
+
+    .nav-profile {
+        color: #17140B;
+    }
+
+    {%endif%}
+</style>

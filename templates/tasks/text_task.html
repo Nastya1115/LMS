@@ -1,0 +1,60 @@
+{%include 'tasks/d_text_task.html'%}
+
+<form method="post">
+<div class="a">
+
+<div class="b">
+    {%csrf_token%}
+    <div class="t-form-style">{{task_form.text}}</div>
+</div>
+
+<div class="c-container c">
+    <div style="display: flex;float: right;gap: 10px;">
+        <span class='global-text' style="font-size: 20px;">
+        {%if task_user.is_complete %}
+        completed
+        {%else%}
+        not completed
+        {%endif%}
+        </span>
+        {% if is_teacher %}
+        <div class="i-form-style">
+        {{task_form.is_complete}}
+        </div>
+        {% endif %}
+    </div>
+    <p class="global-text task-title">{{task.name}}</p>
+    <p class="global-text task-desc">{{task.desc}}<br><br>{%if task.file%}<img src="{{task.file.url}}">{%endif%}</p>
+    <div style="display: flex;justify-content: space-between;">
+    <button type="submit" class="green-btn">send</button>
+    <button type="button" class="green-btn" data-bs-toggle="modal" data-bs-target="#modal{{task_user.id}}">
+        teacher's comment
+    </button>
+    <div class="modal fade" id="modal{{task_user.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content modal-dynamic">
+            <div class="modal-body">
+                {% if is_teacher %}
+                <div class="c-form-style">{{task_form.comment}}</div>
+                {%else%}
+                <span class='global-text'>teacher's comment<br>
+                {{task_user.comment}}
+                </span>
+                {%endif%}
+            </div>
+            <div class="modal-footer">
+            <button type="button" data-bs-dismiss="modal" class="red-btn">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% if is_teacher %}
+    <div class="n-form-style global-text">note: {{task_form.note}}</div>
+    {%else%}
+    <span class="global-text">your note: {{task_user.note}} / {{task.max_note}}</span>
+    {%endif%}
+    </div>
+</div>
+
+</div>
+</form>

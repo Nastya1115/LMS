@@ -1,0 +1,22 @@
+{%load static%}
+<link rel="stylesheet" href="{% static 'task/task.css' %}">
+<style>
+
+/** DARK THEME **/
+{%if user.theme%}
+
+.nav {
+    background-color: #101010; 
+    box-shadow: 0 5px 6px 0 #00000079;
+}
+
+/** LIGHT THEME **/
+{%else%}
+
+.nav {
+    background-color: #F7F0E6; 
+    box-shadow: 0 5px 6px 0 #bab1a479;
+}
+
+{%endif%}
+</style>

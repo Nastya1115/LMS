@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {%include 'admin/dynamic/d_create.html' %}
+    {%include 'admin/dynamic/d_edits.html' %}
+   
+    <div class="main-container">
+    <!-- COURSE: LEFT CONTAINER -->
+    <div class='c-container a'>
+    <p class="title">
+        <span class="global-text name">{{course.name}}</span>
+        <span class="global-text id">{{course.id}}</span>
+    </p>
+    <form method="post" enctype='multipart/form-data'>
+        {%csrf_token%}
+        <div class="form-style global-text">
+            ⤑ Enter new course name
+            {{form.name}}
+        </div>
+        <div class="form-style global-text">
+            ⤑ Description
+            {{form.desc}}
+        </div>
+        <div class="tags-list">
+        {% for tag in course.tags.all %}
+        <div class="tag">{{tag.name}}</div>
+        {% endfor %}
+        </div>
+        <br>
+        <div class="form-style global-text">
+            Add tag (use 'space' to add multiple tags)
+            {{form.tags}}
+        </div>
+        <br>
+        <button type="submit" class="sumbit-btn">sumbit changes</button>
+    </form>
+    </div>
+    <!-- COURSE: RIGHT CONTAINER -->
+    <div class='c-container b'>
+    <!-- R.CONTAINER: NAV -->
+    <ul class="nav nav-tabs nav-pills" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="module-modules-tab" data-bs-toggle="tab" data-bs-target="#module-modules" type="button" role="tab" aria-controls="module-modules" aria-selected="true">modules</button>
+        </li>
+        <li class="nav-item" role="presentation">
+        <button class="nav-link" id="groups-tab" data-bs-toggle="tab" data-bs-target="#groups" type="button" role="tab" aria-controls="groups" aria-selected="false">groups</button>
+        </li>
+    </ul>
+    <!-- R.CONTAINER: NAV-TABS -->
+    <div class="tab-content" id="myTabContent">
+        <!-- NAV-TABS: TAB1 -->
+        <div class="tab-pane fade show active" id="module-modules" role="tabpanel" aria-labelledby="module-modules-tab">
+        <br>
+        <span class="global-text contains-text">✦ This course contains {{course.modules.count}} modules</span>
+        <a href="{% url 'new_module' course.pk %}" class="global-text new-link">add new module</a>
+        <br><br><div class="global-divider" style="width: 98%;"></div><br>
+        {% for module in course.modules.all %}
+        <div class="inner-container {% if forloop.counter|divisibleby:2 %}light{%endif%}">
+            <a href="{% url 'update_module' module.pk %}" class="global-text left">{{module.name}}</a>
+            <a href="{% url 'delete_module' module.pk %}" class="global-text right">delete</a>
+        </div>
+        {%endfor%}
+        </div>
+        <!-- NAV-TABS: TAB2 -->
+        <div class="tab-pane fade" id="groups" role="tabpanel" aria-labelledby="groups-tab">
+        <br>
+        <span class="global-text contains-text">✦ This course contains {{course.groups.count}} groups</span>
+        <a href="{% url 'new_group' course.pk %}" class="global-text new-link">add new group</a>
+        <hr>
+        {% for group in course.groups.all %}
+        <div class="inner-container {% if forloop.counter|divisibleby:2 %}light{%endif%}">
+            <a href="{% url 'update_group' group.pk %}" class="global-text left">{{group.name}}</a>
+            <a href="{% url 'delete_group' group.pk %}" class="global-text right">delete</a>
+        </div>
+        {%endfor%}
+        </div>
+    </div>
+
+    </div>
+    </div>
+    <br>
+
+{%endblock%}

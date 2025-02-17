@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    {% load static %}
+</head>
+<body>
+
+    {% include 'dynamic/dmain.html' %}
+    {% include 'tasks/dtask.html' %}
+
+    <div class="nav">
+        <a class='global-text back-btn' href="javascript:history.back()">⬅ back on prev page</a>
+        <a class='global-text theme-btn' href="{% url 'change_theme' %}"><i class="fas fa-sun"></i></a>
+    </div>
+
+    {%if task.type2 == 'TEXT'%}
+    {% include 'tasks/text_task.html' %}
+    {%elif task.type2 == 'VIDEO'%}
+    {% include 'tasks/video_task.html' %}
+    {%elif task.type2 == 'READ'%}
+    {% include 'tasks/read_task.html' %}
+    {%endif%}
+
+</body>
+</html>

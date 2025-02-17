@@ -1,0 +1,23 @@
+{%load static%}
+<link rel="stylesheet" href="{% static 'profile/update_profile.css' %}">
+<style>
+{%if user.theme%}
+
+.form-inner-container-username input,
+.form-inner-container-bio textarea,
+.form-inner-container-file input[type="file"] {
+    background-color: #222223;
+    color: #d0d0d4;
+}
+
+{%else%}
+
+.form-inner-container-username input,
+.form-inner-container-bio textarea,
+.form-inner-container-file input[type="file"] {
+    background-color: #ede4d6;
+    color: black;
+}
+
+{%endif%}
+</style>

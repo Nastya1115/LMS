@@ -1,0 +1,17 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'courses/course_detail.css' %}">
+<style>
+{%if user.theme%}
+
+.tags > .tag {
+    background-color: #222223;
+}
+
+{%else%}
+
+.tags > .tag {
+    background-color: #ede4d6;
+}
+
+{%endif%}
+</style>

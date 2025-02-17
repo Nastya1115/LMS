@@ -1,0 +1,35 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'courses/courses_page.css' %}">
+<style>
+{%if user.theme%}
+
+.tags > .tag {
+    background-color: #222223;
+}
+
+.search-form input{
+    background-color: #49494a;
+    color: #d0d0d4;
+}
+
+.search-form input::placeholder{
+    color: #2b2b2c;
+}
+
+{%else%}
+
+.tags > .tag {
+    background-color: #ede4d6;
+}
+
+.search-form input{
+    background-color: #ede4d6;
+    color: black;
+}
+
+.search-form input::placeholder{
+    color: #645f4e;
+}
+
+{%endif%}
+</style>

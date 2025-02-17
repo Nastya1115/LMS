@@ -1,0 +1,24 @@
+{%load static%}
+<link rel="stylesheet" href="{% static 'auth/general.css' %}">
+<style>
+
+/** DARK THEME **/
+{%if user.theme%}
+
+.form-style input {
+    border: 1.5px #49494a solid;
+    background-color: #49494a;
+    color: #d0d0d4;
+}
+
+/** LIGHT THEME **/
+{%else%}
+
+.form-style input {
+    border: 1.5px #ede4d6 solid;
+    background-color: #ede4d6;
+    color: #17140B;
+}
+
+{%endif%}
+</style>

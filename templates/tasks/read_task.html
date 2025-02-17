@@ -1,0 +1,13 @@
+{%load static%}
+<link rel="stylesheet" href="{% static 'task/video_task.css' %}">
+
+<div class="a">
+
+<iframe src="https://docs.google.com/presentation/d/{{task.link}}/embed?start=false&loop=false&delayms=3000" frameborder="0" class="b"></iframe>
+
+<div class="c-container c">
+    <p class="global-text task-title">{{task.name}}</p>
+    <p class="global-text task-desc">{{task.desc}}<br><br>{%if task.file%}<img src="{{task.file.url}}">{%endif%}</p>
+</div>
+
+</div>

@@ -1,0 +1,44 @@
+{% include 'dynamic/dnav.html' %}
+
+<div class="nav-base">
+    <!--tabs logo-->
+    <a class="nav-logo" href="{% url 'main' %}">
+        Site name
+    </a>
+    <!--tabs all courses-->
+    <a href="{% url 'courses' %}" class="nav-text">
+        <i class="fas fa-book-open"></i>
+        Avaible courses
+    </a>
+    <!--tabs all courses-->
+    <a href="{% url 'news' %}" class="nav-text">
+        <i class="fa-solid fa-newspaper"></i>
+        News
+    </a>
+    <!--tabs profile-->
+    <div class="dropdown">
+        <button class="nav-profile" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Hello, {% if user.is_authenticated %}{{user.username}}{%else%}Anonymous{%endif%}
+            <div class="navbar-avatar" style="background-image: url('{% if user.is_authenticated %}{{user.avatar.url}}{%else%}/media/user_icons/standart_user.jpg{%endif%}');"></div>
+        </button>
+        <ul class="dropdown-menu">
+        {% if user.is_authenticated %}
+            <li><a class="dropdown-item" href="{% url 'profile' user.pk %}"><i class="fas fa-user"></i> Your profile</a></li>
+            <li><a class="dropdown-item" href="{% url 'change_theme' %}"><i class="fas fa-sun"></i> Change theme</a></li>
+            <hr>
+            {% if "admin" in user.groups.all|join:"," %}
+            <li><a class="dropdown-item" href="{% url 'admin_panel' %}"><i class="fas fa-keyboard"></i> Admin panel</a></li>
+            {%endif%}
+            {% if "teacher" in user.groups.all|join:"," or "admin" in user.groups.all|join:"," %}
+            <li><a class="dropdown-item" href="{% url 'teacher_panel' user.pk %}"><i class="fas fa-chalkboard"></i> Teacher panel</a></li>
+            <hr>
+            {%endif%}
+            <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-door-open"></i> Logout</a></li>
+        {%else%}
+            <li><a class="dropdown-item" href="{% url 'register' %}">register</a></li>
+            <li><a class="dropdown-item" href="{% url 'login' %}">login</a></li>
+        {%endif%}
+        </ul>
+      </div>
+    <!--tabs end-->
+</div>

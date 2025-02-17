@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {%include 'admin/dynamic/d_create.html' %}
+    {%include 'admin/dynamic/d_edits.html' %}
+
+    <div class="main-container">
+        <!-- COURSE: LEFT CONTAINER -->
+        <div class='c-container a' style="max-height: 35vh;">
+            <p class="title">
+                <span class="global-text name">{{module.name}}</span>
+                <span class="global-text id">{{module.id}}</span>
+            </p>
+        <form method="post" enctype='multipart/form-data'>
+            {%csrf_token%}
+            <div class="form-style global-text">
+                ⤑ Enter new module name
+                {{form.name}}
+            </div>
+            <br>
+            <button type="submit" class="sumbit-btn">sumbit changes</button>
+        </form>
+        </div>
+        <!-- COURSE: RIGHT CONTAINER -->
+        <div class='c-container b'>
+            <span class="global-text contains-text">✦ This module contains {{module.lessons.count}} lessons</span>
+            <a href="{% url 'new_lesson' module.pk %}" class="global-text new-link">add new lesson</a>
+            <div class="global-divider" style="width: 98%;margin-top: 15px;"></div><br>
+            {% for lesson in module.lessons.all %}
+            <div class="inner-container">
+                <span class="global-text left">• {{lesson.name}}</span>
+                <a href="{% url 'update_lesson' lesson.pk %}" class="global-text right">edit</a>
+                <a href="{% url 'delete_lesson' lesson.pk %}" class="global-text right">delete</a>
+                <a href="{% url 'add_task' lesson.pk %}" class="global-text right">add task</a>
+            </div>
+            <div class="tasks-list">
+            {% for task in lesson.tasks.all %}
+            <a href="{% url 'update_task' task.pk %}" class="global-text">{{task.name}}</a>
+            {% endfor %}
+            </div><br>
+            {% endfor %}
+        </div>
+    </div>
+
+{%endblock%}

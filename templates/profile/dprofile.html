@@ -1,0 +1,62 @@
+{%load static%}
+<link rel="stylesheet" href="{% static 'profile/profile.css' %}">
+<style>
+
+/** DARK THEME **/
+{%if user.theme%}
+
+.nav {
+    background-color: #101010; 
+    box-shadow: 0 5px 6px 0 #00000079;
+}
+
+.profile-avatar {
+    box-shadow: 0 4px 10px #00000079;
+}
+
+.edit-btn {
+    color: #616164;
+}
+
+.edit-btn:hover {
+    color: #808085;
+}
+
+.group-container, .course-link {
+    background-color: #222223;
+}
+
+.course-link:hover {
+    background-color: #1d1d1e;
+}
+
+/** LIGHT THEME **/
+{%else%}
+
+.nav {
+    background-color: #F7F0E6; 
+    box-shadow: 0 5px 6px 0 #bab1a479;
+}
+
+.profile-avatar {
+    box-shadow: 0 4px 10px #bab1a479;
+}
+
+.edit-btn {
+    color: #645f4e;
+}
+
+.edit-btn:hover {
+    color: #17140B;
+}
+
+.group-container, .course-link {
+    background-color: #ede4d6;
+}
+
+.course-link:hover {
+    background-color: #ddd2c1;
+}
+
+{%endif%}
+</style>

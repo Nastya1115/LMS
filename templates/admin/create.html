@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {%include 'admin/dynamic/d_create.html' %}
+
+    <div class="c-container" style="justify-self: center;width: 80%;">
+    
+    {% if task %}
+    <a href="{%url 'delete_task' task.pk %}" class="global-text" style="float: right;font-size: 20px;">delete</a>
+    {%endif%}
+
+    <h1 class="global-text">Editing</h1>
+    <div class="global-divider" style="width: 100%;"></div><br>
+
+    {%if form.errors %}
+        <div style="padding: 5px;border-radius: 5px;background-color: #79584c;color: black;">
+        <span style="font-size: 25px;font-weight: 500;"><i class="fa-solid fa-triangle-exclamation"></i> Error!</span>
+        {%for formfield in form%}
+        {% for error in formfield.errors%}
+        <p>{{error}}</p>
+        {%endfor%}
+        {%endfor%}
+        </div>
+        <br><div class="global-divider" style="width: 80%;"></div><br>
+    {%endif%}
+   
+    <form method="post" enctype='multipart/form-data'>
+        {%csrf_token%}
+        {% for field in form %}
+        <div class="form-style global-text">
+            ⤑ {{field.label_tag}}
+            {{field}}
+        </div>
+        {% endfor %}
+        <br>
+        <button type="submit" class="sumbit-btn">submit</button>
+    </form>
+    </div>
+
+    <br>
+   
+{%endblock%}

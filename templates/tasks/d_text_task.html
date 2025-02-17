@@ -1,0 +1,49 @@
+{%load static%}
+<link rel="stylesheet" href="{% static 'task/text_task.css' %}">
+<style>
+{%if user.theme%}
+
+.modal-dynamic {
+    background-color: #101010;
+}
+
+.t-form-style textarea,
+.c-form-style textarea,
+.n-form-style input {
+    background-color: #222223;
+    color: #d0d0d4;
+}
+
+.t-form-style ::-webkit-scrollbar-thumb,
+.c-form-style ::-webkit-scrollbar-thumb {
+    background: #d0d0d4;
+}
+
+.task-desc::-webkit-scrollbar-thumb {
+    background: #49494a;
+}
+
+{%else%}
+
+.modal-dynamic {
+    background-color: #F7F0E6;
+}
+
+.t-form-style textarea,
+.c-form-style textarea,
+.n-form-style input {
+    background-color: #ede4d6;
+    color: black;
+}
+
+.t-form-style ::-webkit-scrollbar-thumb,
+.c-form-style ::-webkit-scrollbar-thumb {
+    background: #17140B;
+}
+
+.task-desc::-webkit-scrollbar-thumb {
+    background: #ede4d6;
+}
+
+{%endif%}
+</style>

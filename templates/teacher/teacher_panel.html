@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {%include 'teacher/dynamic/d_teacher_panel.html'%}
+
+    <div class="c-container" style="justify-self: center;width: 80%;">
+    {% if "admin" in user.groups.all|join:"," %}
+    <form method="post" class="search-form">
+        {%csrf_token%}
+        <input type="text" name="user_search" placeholder="Search user">
+        <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
+    <br><div class="global-divider" style="width: 70%;"></div><br>
+    {%endif%}
+    <p class="title global-text">
+        Hello, {{selected_user.username}}!
+    </p>
+    <br><div class="global-divider" style="width: 70%;"></div><br>
+    {% for group in selected_user.teaching_groups.all%}
+    <div class='group-container'>
+        <a href="{% url 'tgroup_detail' group.pk %}">{{group.name}}</a>
+        <span class="global-text">this group have {{group.students.all.count}} students</span>
+    </div>
+    <br>
+    {% endfor%}
+    </div>
+
+{%endblock%}

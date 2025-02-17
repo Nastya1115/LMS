@@ -1,0 +1,19 @@
+{%load static%}
+<link rel="stylesheet" href="{% static 'main/news.css' %}">
+<style>
+{%if user.theme%}
+
+.accordion-body {
+    background-color: #2b2b2c;
+    color: #d0d0d4;
+}
+
+{%else%}
+
+.accordion-body {
+    background-color: #faf5eb;
+    color: #17140B;
+}
+
+{%endif%}
+</style>

@@ -1,0 +1,41 @@
+{%load static%}
+<link rel="stylesheet" href="{% static 'admin/update_course.css' %}">
+<style>
+{%  if user.theme %}
+
+.tasks-list {
+    background: linear-gradient(to bottom, #222223, #222223, #2b2b2c);
+}
+
+.inner-container {
+    background-color: #222223;
+}
+
+.nav-tabs {
+    background-color: #222223;
+}
+
+.light {
+    background-color: #2b2b2c;
+}
+
+{% else %}
+
+.tasks-list {
+    background: linear-gradient(to bottom, #ede4d6, #ede4d6, #faf5eb);
+}
+
+.inner-container {
+    background-color: #ede4d6;
+}
+
+.nav-tabs {
+    background-color: #ede4d6;
+}
+
+.light {
+    background-color: #faf5eb;
+}
+
+{% endif %}
+</style>

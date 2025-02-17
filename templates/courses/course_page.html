@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'avatars.css' %}">
+    {%include 'courses/dynamic/d_course_page.html'%}
+
+    <div class="c-container" style="justify-self: center;width: 80%">
+    
+    <h1 class="global-text" style="text-align: center;">{{course.name}}</h1>
+    <div class="global-divider" style="width: 70%"></div><br>
+
+    <div style="display: flex;gap: 15px;">
+    <ul class="nav nav-tabs nav-pills flex-column" id="myTab" role="tablist">
+        {%for module in modules%}
+        <li class="nav-item" role="presentation">
+        <button class="nav-link {% if forloop.first %}active{%endif%}" id="module{{module.id}}-tab" data-bs-toggle="tab" data-bs-target="#module{{module.id}}" type="button" role="tab" aria-controls="module{{module.id}}" aria-selected="true">{{module.name}}</button>
+        </li>
+        {%endfor%}
+        <li class="nav-item" role="presentation">
+        <button class="nav-link" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab" aria-controls="all" aria-selected="false">All tasks</button>
+        </li>
+        <li class="nav-item" role="presentation">
+        <button class="nav-link" id="group-tab" data-bs-toggle="tab" data-bs-target="#group" type="button" role="tab" aria-controls="group" aria-selected="false">Your group</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent" style="flex-grow: 1;">
+        {%for module in modules%}
+        <div class="tab-pane fade {% if forloop.first %}show active{%endif%}" id="module{{module.id}}" role="tabpanel" aria-labelledby="module{{module.id}}-tab">
+            {%for lesson in module.lessons.all %}
+            <div style="display: flex;">
+                <div class="id-circle">{{forloop.counter}}</div>
+                <div class="item-rect">
+                <span class="global-text">{{lesson.name}}</span>
+                </div>
+            </div>
+            <br>
+            <div style="display: flex;flex-wrap: wrap;gap: 20px;">
+            {% for task, user_task in tasks_dict.items %}
+            {%if task.lesson == lesson%}
+            {% if user_task and user_task.group == group %}
+            <a href="{% url 'task_view' group.id task.id user.id %}" style="text-decoration: none;">
+                <div class="task-style {%if user_task.is_complete%}complete{%else%}uncomplete{%endif%}">{{task.name}}</div>
+            </a>
+            {%else%}
+            <div class="task-style locked">{{task.name}}</div>
+            {%endif%}
+            {%endif%}
+            {% endfor %}
+            </div>
+            <br>
+            {%endfor%}
+        </div>
+        {%endfor%}
+        <div class="tab-pane fade" id="all" role="tabpanel" aria-labelledby="all-tab">
+            {%for module in modules%}
+            {%for lesson in module.lessons.all %}
+            <div style="display: flex;">
+                <div class="id-circle">{{forloop.counter}}</div>
+                <div class="item-rect">
+                <span class="global-text">{{module.name}}: {{lesson.name}}</span>
+                </div>
+            </div>
+            <br>
+            <div style="display: flex;flex-wrap: wrap;gap: 20px;">
+            {% for task, user_task in tasks_dict.items %}
+            {%if task.lesson == lesson%}
+            {% if user_task and user_task.group == group %}
+            <a href="{% url 'task_view' group.id task.id user.id %}" style="text-decoration: none;">
+                <div class="task-style {%if user_task.is_complete%}complete{%else%}uncomplete{%endif%}">{{task.name}}</div>
+            </a>
+            {%else%}
+            <div class="task-style locked">{{task.name}}</div>
+            {%endif%}
+            {%endif%}
+            {% endfor %}
+            </div>
+            <br>
+            {%endfor%}
+            {%endfor%}
+        </div>
+        <div class="tab-pane fade" id="group" role="tabpanel" aria-labelledby="group-tab">
+            <div class="group-title">
+                <span class="title">{{group.name}}</span>
+                <a href='https://meet.google.com/{{group.link}}/' class="link"><i class="fa-solid fa-camera"></i></a>
+            </div>
+            <br>
+            <div style="padding-left: 10px;">
+            <div class="users">
+            <div class="teacher global-text">
+                <i class="fa-solid fa-crown"></i>
+                <div class="group-avatar" style="background-image: url('{{group.teacher.avatar.url}}')"></div>
+                {{group.teacher.username}}
+            </div>
+            {%for student in group.students.all%}
+            <div class="student global-text">
+                <div class="group-avatar" style="background-image: url('{{student.avatar.url}}')"></div>
+                {{student.username}}
+            </div>
+            {%endfor%}
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    </div>
+    <br>
+
+{%endblock%}

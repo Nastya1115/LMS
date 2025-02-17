@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    {% load static %}
+</head>
+<body>
+
+    {% include 'dynamic/dmain.html' %}
+    {% include 'auth/dynamic.html' %}
+    <div class='a' style="display: flex;">
+
+    <div style="min-width: 50%;min-height: 35vh;">
+    <p class="global-text header">Authorization</p>
+    <div class="global-divider" style="width: 80%;"></div><br><br>
+    <form method="post" class="form-style">
+        {%csrf_token%}
+        {%if form.errors %}
+        {%for formfield in form%}
+        {% for error in formfield.errors%}
+        <p>{{error}}</p>
+        {%endfor%}
+        {%endfor%}
+        {%endif%}
+        <span class="global-text b">Username</span>
+        <div class="form-style">{{form.username}}</div>
+        <br>
+        <span class="global-text b">Password</span>
+        <div class="form-style">{{form.password1}}</div>
+        <br>
+        <span class="global-text b">Repeat password</span>
+        <div class="form-style">{{form.password2}}</div>   
+        <br><br> 
+        <button type="submit" class="sumbit-button red">register</button>
+    </form>
+    </form>
+    </div>
+
+    <div class="c-container side-panel" style="border-radius: 0;">
+        <p class="global-text" style="font-size: 50px;font-weight: 800;">Hello new user!</p>
+        <a href="{% url 'login' %}" class="sub-text">Have an account? Login here!</a>
+        <br><br><br>
+        <a href="{% url 'main' %}" class="sub-text">or back on main page</a>
+    </div>
+
+    </div>
+
+</body>
+</html>

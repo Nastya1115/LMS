@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    {% load static %}
+</head>
+<body>
+
+    {% include 'dynamic/dmain.html' %}
+    {% include 'auth/dynamic.html' %}
+    <div class='a' style="display: flex;gap: 50px">
+
+    <div style="min-width: 50%;min-height: 30vh;">
+    <p class="global-text header">Sign in</p>
+    <div class="global-divider" style="width: 80%;"></div><br><br>
+    <form method="post" class="form-style">
+        {%csrf_token%}
+        <span class="global-text b">Username</span>
+        <div class="form-style">{{form.username}}</div>
+        <br>
+        <span class="global-text b">Password</span>
+        <div class="form-style">{{form.password}}</div>    
+        <br><br> 
+        <button type="submit" class="sumbit-button green">login</button>
+    </form>
+    </form>
+    </div>
+
+    <div class="c-container side-panel" style="border-radius: 0;">
+        <p class="global-text" style="font-size: 50px;font-weight: 800;">Welcome back!</p>
+        <a href="{% url 'register' %}" class="sub-text">Have no account? Register here!</a>
+        <br><br><br>
+        <a href="{% url 'main' %}" class="sub-text">or back on main page</a>
+    </div>
+
+    </div>
+
+</body>
+</html>

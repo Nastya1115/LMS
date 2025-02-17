@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {%include 'dynamic/dnews.html'%}
+
+    <div style="display: flex;gap:25px;flex-direction: column;width: 80%;justify-self: center;">
+        {%for new in news%}
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#new{{new.id}}" aria-expanded="true" aria-controls="new{{new.id}}">
+                        <div style="display: flex;width: 100%;justify-content: space-between;">
+                        <span><i class="fa-solid fa-bullhorn"></i> {{new.title}}</span>
+                        <span">{{new.date}}</span>
+                        </div>
+                    </button>
+                </h2>
+                <div id="new{{new.id}}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        {{new.text}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+    
+
+{%endblock%}

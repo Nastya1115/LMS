@@ -1,0 +1,21 @@
+{%load static%}
+<link rel="stylesheet" href="{% static 'teacher/group_detail.css' %}">
+<style>
+{%if user.theme %}
+
+.nav-tabs,
+.dark,
+.lesson-container {
+    background-color: #222223;
+}
+
+{%else%}
+
+.nav-tabs,
+.dark,
+.lesson-container {
+    background-color: #ede4d6;
+}
+
+{%endif%}
+</style>

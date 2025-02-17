@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {%include 'teacher/dynamic/d_group_detail.html'%}
+
+    <div class="global-text c-container title-container">
+        <h1>{{group.name}}</h1>
+        <h3>Course: {{group.course.name}}</h3>
+    </div>
+
+    <br>
+
+    <div style="display: flex;gap:20px;width: 90%; justify-self: center">
+    <div class="c-container a">
+        <h3 class="global-text"><i class="fa-solid fa-users"></i> All students</h3>
+        <div class="global-divider" style="width: 98%;"></div><br>
+        {%for student in group.students.all%}
+        <div class="students-list {% if not forloop.counter|divisibleby:2 %}dark{%endif%}">
+            <a href="{% url 'student_view' group.pk student.pk %}" class="global-text">{{student.username}}</a>
+        </div>
+        {%endfor%}
+    </div>
+    <div class="c-container b">
+        <ul class="nav nav-tabs nav-pills" id="myTab" role="tablist">
+            {%for module in group.course.modules.all%}
+            <li class="nav-item" role="presentation">
+            <button class="nav-link {% if forloop.first %}active{%endif%}" id="module{{module.id}}-tab" data-bs-toggle="tab" data-bs-target="#module{{module.id}}" type="button" role="tab" aria-controls="module{{module.id}}" aria-selected="true">{{module.name}}</button>
+            </li>
+            {%endfor%}
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            {%for module in group.course.modules.all%}
+            <div class="tab-pane fade {% if forloop.first %}show active{%endif%}" id="module{{module.id}}" role="tabpanel" aria-labelledby="module{{module.id}}-tab">
+                <div class="lessons-container">
+                {%for lesson in module.lessons.all %}
+                <div class="lesson-container">
+                <div class="title-c">
+                <div class="title global-text">
+                {%for lesson_group in lesson_groups%}
+                {%if lesson_group.lesson == lesson and not lesson_group.avaible %}
+                <i class="fas fa-lock"></i>
+                {%endif%}
+                {%endfor%}
+                <span>{{lesson.name}}</span>
+                </div>
+                {%for lesson_group in lesson_groups%}
+                {%if lesson_group.lesson == lesson and not lesson_group.avaible %}
+                <a href="{% url 'unlock_lesson' lesson.pk group.pk %}" class="global-text">unlock lesson</a>
+                {%endif%}
+                {%endfor%}
+                </div>
+                <div class="global-divider" style="width: 98%;margin-top: 5px;margin-bottom: 15px;"></div>
+                <ul class="tasks-list global-text">
+                {% for task in lesson.tasks.all %}
+                <li><a href="{% url 'task_view' 0 task.id 0 %}" class="global-text">{{task.name}}</a></li>
+                {%endfor%}
+                </ul>
+                </div>
+                {%endfor%}
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+    </div>
+
+{%endblock%}

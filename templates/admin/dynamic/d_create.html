@@ -1,0 +1,35 @@
+{%load static%}
+<link rel="stylesheet" href="{% static 'admin/create.css' %}">
+<style>
+{%if user.theme%}
+
+.form-style ::-webkit-scrollbar-thumb {
+    background: #d0d0d4;
+}
+
+.form-style input,
+.form-style textarea,
+.form-style select, 
+.form-style input[type="file"] {
+    background-color: #222223;
+    border-top: 2px #d0d0d4 solid;
+    color: #d0d0d4;
+}
+
+{%else%}
+
+.form-style ::-webkit-scrollbar-thumb {
+    background: #17140B;
+}
+
+.form-style input,
+.form-style textarea,
+.form-style select, 
+.form-style input[type="file"] {
+    background-color: #ede4d6;
+    border-top: 2px #17140B solid;
+    color: #17140B;
+}
+
+{%endif%}
+</style>

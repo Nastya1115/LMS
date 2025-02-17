@@ -1,0 +1,33 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'courses/course_page.css' %}">
+<style>
+{%if user.theme %}
+
+.item-rect {
+    background-color: #222223;
+}
+
+.id-circle {
+    box-shadow: 0 0 0 6px #2b2b2c;
+}
+
+.nav-tabs {
+    background-color: #222223;
+}
+
+{%else%}
+
+.item-rect {
+    background-color: #ede4d6;
+}
+
+.id-circle {
+    box-shadow: 0 0 0 6px #faf5eb;
+}
+
+.nav-tabs {
+    background-color: #F7F0E6;
+}
+
+{%endif%}
+</style>

@@ -1,0 +1,71 @@
+<!-- 150 characters or fewer. Letters, digits and @/./+/-/_ only. -->
+{% extends "base.html" %}
+
+{% block content %}
+
+    {%include 'profile/d_update_profile.html'%}
+
+    <div class="c-container" style="justify-self: center; width: 70%;">
+
+    <p class="global-text title">Edit your profile</p>
+    <div class="global-divider" style="width: 80%;"></div><br>
+    
+    <form method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        {%if form.errors %}
+        <div style="padding: 5px;border-radius: 5px;background-color: #79584c;color: black;">
+        <span style="font-size: 25px;font-weight: 500;"><i class="fa-solid fa-triangle-exclamation"></i> Error!</span>
+        {%for formfield in form%}
+        {% for error in formfield.errors%}
+        <p>{{error}}</p>
+        {%endfor%}
+        {%endfor%}
+        </div>
+        <br><div class="global-divider" style="width: 80%;"></div><br>
+        {%endif%}
+        <div style="display: flex;justify-content: space-between;width: 60%;justify-self: center;">
+            <div class="update-profile-avatar" style="background-image: url('{{user.avatar.url}}');"></div>
+            <span class="arrow global-text"><i class="fa-solid fa-arrow-right"></i></span>
+            <div class="update-profile-avatar" id="new_avatar_div"></div>
+        </div>
+        <br>
+        <div class="form-style">
+            <div class="form-inner-container-file">
+            <span class="form-inner-text">Avatar</span>
+            <div>{{form.avatar}}</div>
+        </div>
+        <br>
+        <div class="form-style">
+        <div class="form-inner-container-username">
+        <span class="form-inner-text">Username</span>
+        <div>{{form.username}}</div>
+        </div>
+        <br>
+        <div class="form-inner-container-bio" style="height: 30vh;">
+        <span class="form-inner-text">About<br><span style="font-size:14px">max 256 symbols</span></span>
+        <div>{{form.bio}}</div>
+        </div> 
+        <br><br>
+        <button type="submit" class="sumbit-btn">sumbit</button>
+        </div>
+    </form>
+
+    </div>
+
+    <script>
+        const ImageInput = document.getElementById('image_input');
+        const NewAvatarDiv = document.getElementById('new_avatar_div');
+
+        ImageInput.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    NewAvatarDiv.style.backgroundImage = `url('${event.target.result}')`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
+{%endblock%}

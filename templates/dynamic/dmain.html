@@ -1,0 +1,54 @@
+{%load static%}
+<link rel="stylesheet" href="{% static 'main.css' %}">
+<style>
+
+/** DARK THEME **/
+{%if user.theme%}
+
+body {
+    background-image: url("{% static 'dark_bg.png' %}");
+}
+
+.c-container {
+    background-color: #2b2b2c;
+    box-shadow: 0 4px 10px #00000079, 0 0 10px #00000079;
+}
+
+.global-text {
+    color: #d0d0d4;
+}
+
+.global-text:hover {
+    color: #d0d0d4;
+}
+
+.global-divider {
+    background-color: #d0d0d4;
+}
+
+/** LIGHT THEME **/
+{%else%}
+
+body {
+    background-image: url("{% static 'light_bg.png' %}");
+}
+
+.c-container {
+    background-color: #faf5eb;
+    box-shadow: 0 4px 10px #bab1a479, 0 0 10px #bab1a479; 
+}
+
+.global-text {
+    color: #17140B;
+}
+
+.global-text:hover {
+    color: #17140B;
+}
+
+.global-divider {
+    background-color: #17140B;
+}
+
+{%endif%}
+</style>

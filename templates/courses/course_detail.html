@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {%include 'courses/dynamic/d_course_detail.html'%}
+    
+    <div class="c-container" style="justify-self: center;width: 80%;">
+        <div class="title">
+            {{course.name}}
+        </div>
+        <p class="desc global-text">{{course.desc}}</p>
+        <div class="tags">
+        {%for tag in course.tags.all%}
+        <div class="tag global-text">{{tag.name}}</div>
+        {%endfor%}
+        </div>
+        {% if user.is_authenticated %}
+        <div class="request-btn">
+        <a href="{% url 'send_course_request' course.pk %}">send request</a>
+        </div>
+        {%endif%}
+    </div>
+    <br>
+
+{%endblock%}
