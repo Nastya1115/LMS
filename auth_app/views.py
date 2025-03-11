@@ -69,7 +69,8 @@ class UpdateProfileView(UserIsProfileOwner, UpdateView):
 
     def form_valid(self, form):
         selected_object = self.get_object()
-        if selected_object.avatar != DEFAULT_AVATAR_PATH:
+        avatar = form.cleaned_data.get('avatar')
+        if selected_object.avatar != avatar and selected_object.avatar != DEFAULT_AVATAR_PATH:
             if os.path.isfile(selected_object.avatar.path):
                 os.remove(selected_object.avatar.path)
         return super().form_valid(form)
