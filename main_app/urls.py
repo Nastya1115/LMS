@@ -13,6 +13,10 @@ urlpatterns = [
     path("admin_panel/make_admin/<int:user_pk>/", views.make_admin, name="make_admin"),
     path("admin_panel/make_teacher/<int:user_pk>/", views.make_teacher, name="make_teacher"),
     path("admin_panel/make_student/<int:user_pk>/", views.make_student, name="make_student"),
+    # notifications stuff
+    path("notifications/", views.NotificationsView.as_view(), name="notifications_page"),
+    path("notifications/delete/<int:notification_pk>/", views.delete_notification, name="delete_notification"),
+    path("notifications/delete_all/", views.delete_all_notification, name="delete_all_notification"),
     # news stuff
     path("news/", views.NewsView.as_view(), name="news"),
     path("news/add_new/", views.CreateNewView.as_view(), name="new_new"),

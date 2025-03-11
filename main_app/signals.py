@@ -1,6 +1,7 @@
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_migrate
 from django.dispatch import receiver
 from main_app.models import Group, Task, Lesson_Group, Lesson, Task_User
+from auth_app.models import User
 
 # Если создается группа
 @receiver(post_save, sender=Group)
@@ -28,3 +29,10 @@ def auto_connection_group_lessons_2(sender, instance, created, **kwargs):
             if l_g.avaible:
                 for user in group.students.all():
                     Task_User.objects.create(user=user, task=instance, group=group)
+
+def create_super_user(sender, **kwargs):
+    try:
+        if not User.objects.get(username="admin"):
+            User.objects.create(username="admin",password="43tg43yayayeyuse5y43t43tt4yhes5ususu5u56uj6tde5")
+    except:
+        pass

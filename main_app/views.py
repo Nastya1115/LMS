@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView, DetailView
-from main_app.models import New, Course, Group, Module, Task, Lesson, Task_User, Tag, Lesson_Group, CourseRequest
+from main_app.models import Notification, New, Course, Group, Module, Task, Lesson, Task_User, Tag, Lesson_Group, CourseRequest
 from auth_app.models import User
 from main_app.forms import NewForm, CourseForm, GroupForm, LessonForm, TagForm, ModuleForm, TaskStudentForm, TaskTeacherForm, TaskForm, CourseRequestForm
 from django.http import HttpResponseRedirect
@@ -18,7 +18,10 @@ import os
 
 class MainPage(TemplateView):
     template_name = 'main/main_page.html'
-    
+
+class NotificationsView(LoginRequiredMixin, TemplateView):
+    template_name = 'main/notifications.html'
+
 class AdminPanelView(AdminOnly, TemplateView):
     template_name = 'admin/admin_panel.html'
     
@@ -94,7 +97,7 @@ class TaskView(TaskViewAllow, TemplateView):
             return False
 
     def post(self, request, *args, **kwargs):
-        if self.kwargs.get('user_pk') != 0 and self.kwargs.get('group_pk') != 0:
+        if self.kwargs.get('user_pk') != 0:
             task = Task.objects.get(id=self.kwargs.get('task_pk'))
             if task.type2 == 'TEXT':        
                 if self.request.user.groups.filter(name="student").exists():
@@ -528,6 +531,7 @@ def unlock_lesson(request, lesson_pk, group_pk):
                 l_g.avaible = True
                 l_g.save()
                 for user in group.students.all():
+                    Notification.objects.create(user=user,sender=l_g,text=f'New lesson available in {group.name}!')
                     for task in lesson.tasks.all():
                         Task_User.objects.create(user=user, task=task, group=group)
     return redirect('tgroup_detail', pk=group_pk)
@@ -566,3 +570,20 @@ def remove_user_from_group(request, group_pk, user_pk):
             user = User.objects.get(id=user_pk)
             group.students.remove(user)
     return redirect('update_group', pk=group_pk)
+
+def delete_notification(request, notification_pk):
+    if request.method == 'GET':
+        try:
+            notif = Notification.objects.get(id=notification_pk)
+            if request.user == notif.user:
+                notif.delete()
+        except:
+            pass
+    return redirect('notifications_page')
+
+@login_required
+def delete_all_notification(request):
+    if request.method == 'GET':
+        for notification in request.user.notifications_user.all():
+            notification.delete()
+    return redirect('notifications_page')

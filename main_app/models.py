@@ -115,3 +115,8 @@ class New(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Notification(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notifications_user')
+    text = models.TextField()
+    sender = models.ForeignKey(Lesson_Group, on_delete=models.CASCADE, related_name='notifications_sender')

@@ -31,13 +31,20 @@ class CourseViewAllow(object):
 class TaskViewAllow(object):
     def dispatch(self, request, *args, **kwargs):
         try:
+            group_pk = self.kwargs.get('group_pk')
+            task_pk = self.kwargs.get('task_pk')
+            user_pk = self.kwargs.get('user_pk')
             current_user = self.request.user
-            group = Group.objects.get(id=self.kwargs.get('group_pk'))
-            task = Task.objects.get(id=self.kwargs.get('task_pk'))
-            user = User.objects.get(id=self.kwargs.get('user_pk'))
-            t_u = Task_User.objects.get(task=task, user=user, group=group)
-            if not (current_user.groups.filter(name="admin").exists() or group.teacher == current_user or t_u.user == current_user):
-                return redirect('/?error=access_denied')
+            if user_pk == 0:
+                if not (current_user.groups.filter(name="admin").exists() or group.teacher == current_user):
+                    return redirect('/?error=access_denied')
+            else:
+                group = Group.objects.get(id=group_pk)
+                task = Task.objects.get(id=task_pk)
+                user = User.objects.get(id=user_pk)
+                t_u = Task_User.objects.get(task=task, user=user, group=group)
+                if not (current_user.groups.filter(name="admin").exists() or group.teacher == current_user or t_u.user == current_user):
+                    return redirect('/?error=access_denied')
         except:
             return redirect('main')
         return super().dispatch(request, *args, **kwargs)
