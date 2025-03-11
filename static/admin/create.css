@@ -83,3 +83,36 @@
 .form-style input[type="file"]:focus {
     outline: none;
 }
+
+.aaa {
+    display: flex;
+    justify-self: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.bbb {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+}
+
+.ccc {
+    width: 300px;
+}
+
+@media (max-width: 1000px) {
+
+    .aaa {
+        flex-direction: column;
+    }
+
+    .bbb {
+        width: 90%;
+    }
+
+    .ccc {
+        width: auto;
+    }
+}

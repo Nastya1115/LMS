@@ -11,7 +11,7 @@
 
     <br>
 
-    <div style="display: flex;gap:20px;width: 90%; justify-self: center">
+    <div class="snowball">
     <div class="c-container a">
         <h3 class="global-text"><i class="fa-solid fa-users"></i> All students</h3>
         <div class="global-divider" style="width: 98%;"></div><br>
@@ -53,7 +53,7 @@
                 <div class="global-divider" style="width: 98%;margin-top: 5px;margin-bottom: 15px;"></div>
                 <ul class="tasks-list global-text">
                 {% for task in lesson.tasks.all %}
-                <li><a href="{% url 'task_view' 0 task.id 0 %}" class="global-text">{{task.name}}</a></li>
+                <li><a href="{% url 'task_view' group.pk task.id 0 %}" class="global-text">{{task.name}}</a></li>
                 {%endfor%}
                 </ul>
                 </div>

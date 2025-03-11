@@ -14,13 +14,6 @@
     position: relative;
 }
 
-.navbar-avatar {
-    width: 30px;
-    height: 30px;
-    align-self: center;
-    margin-left: 5px;
-}
-
 .update-profile-avatar {
     width: 150px;
     height: 150px;

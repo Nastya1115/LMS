@@ -3,27 +3,54 @@
 <div class="nav-base">
     <!--tabs logo-->
     <a class="nav-logo" href="{% url 'main' %}">
-        Site name
+        <i class="fa-solid fa-house"></i>
+        <span>Site name</span>
     </a>
     <!--tabs all courses-->
     <a href="{% url 'courses' %}" class="nav-text">
         <i class="fas fa-book-open"></i>
-        Avaible courses
+        <span>Courses</span>
     </a>
-    <!--tabs all courses-->
+    <!--tabs newa-->
     <a href="{% url 'news' %}" class="nav-text">
         <i class="fa-solid fa-newspaper"></i>
-        News
+        <span>News</span>
+    </a>
+    <!--tabs aaaa-->
+    <a href="https://media.istockphoto.com/id/1417009411/photo/a-mature-african-man-looking-ecstatic-while-while-celebrating-and-dancing-by-making-a-fist.jpg?s=612x612&w=0&k=20&c=lDYtbozG2FcTucA-Ng1aD0sQ4vBfFJNU6yIC3iz5zyY=" class="nav-text">
+        <i class="fa-solid fa-question"></i>
+        <span>about</span>
     </a>
     <!--tabs profile-->
     <div class="dropdown">
         <button class="nav-profile" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Hello, {% if user.is_authenticated %}{{user.username}}{%else%}Anonymous{%endif%}
+            <span>Hello, {% if user.is_authenticated %}{{user.username}}{%else%}Anonymous{%endif%}</span>
             <div class="navbar-avatar" style="background-image: url('{% if user.is_authenticated %}{{user.avatar.url}}{%else%}/media/user_icons/standart_user.jpg{%endif%}');"></div>
         </button>
+        {% if notifications %}
+            {% with all_notif=notifications|length %}
+            {%if all_notif <= 9 %}
+            <div class="notif notif-avatar">{{ all_notif }}</div>
+            {%else%}
+            <div class="notif notif-avatar">9+</div>
+            {%endif%}
+            {%endwith%}
+        {% endif %}
         <ul class="dropdown-menu">
         {% if user.is_authenticated %}
             <li><a class="dropdown-item" href="{% url 'profile' user.pk %}"><i class="fas fa-user"></i> Your profile</a></li>
+            <li><a class="dropdown-item" href="{% url 'notifications_page' %}">
+                <i class="fas fa-bell"></i> Notifications⠀
+                {% if notifications %}
+                {% with all_notif=notifications|length %}
+                {%if all_notif <= 9 %}
+                <div class="notif">{{ all_notif }}</div>
+                {%else%}
+                <div class="notif">9+</div>
+                {%endif%}
+                {%endwith%}
+                {% endif %}
+            </a></li>
             <li><a class="dropdown-item" href="{% url 'change_theme' %}"><i class="fas fa-sun"></i> Change theme</a></li>
             <hr>
             {% if "admin" in user.groups.all|join:"," %}

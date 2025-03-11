@@ -11,7 +11,7 @@
     <h1 class="global-text" style="text-align: center;">{{course.name}}</h1>
     <div class="global-divider" style="width: 70%"></div><br>
 
-    <div style="display: flex;gap: 15px;">
+    <div class="hole">
     <ul class="nav nav-tabs nav-pills flex-column" id="myTab" role="tablist">
         {%for module in modules%}
         <li class="nav-item" role="presentation">
@@ -42,10 +42,18 @@
             {%if task.lesson == lesson%}
             {% if user_task and user_task.group == group %}
             <a href="{% url 'task_view' group.id task.id user.id %}" style="text-decoration: none;">
-                <div class="task-style {%if user_task.is_complete%}complete{%else%}uncomplete{%endif%}">{{task.name}}</div>
+                <div class="task-style {%if user_task.is_complete%}complete{%else%}uncomplete{%endif%}">
+                    {% if task.type2 == 'TEXT'%}
+                    <i class="fa-solid fa-pen-nib"></i>
+                    {% elif task.type2 == 'VIDEO'%}
+                    <i class="fa-solid fa-video"></i>
+                    {% elif task.type2 == 'READ'%}
+                    <i class="fa-solid fa-book"></i>
+                    {%endif%}
+                </div>
             </a>
             {%else%}
-            <div class="task-style locked">{{task.name}}</div>
+            <div class="task-style locked">{{task.type2}}</div>
             {%endif%}
             {%endif%}
             {% endfor %}
@@ -69,7 +77,15 @@
             {%if task.lesson == lesson%}
             {% if user_task and user_task.group == group %}
             <a href="{% url 'task_view' group.id task.id user.id %}" style="text-decoration: none;">
-                <div class="task-style {%if user_task.is_complete%}complete{%else%}uncomplete{%endif%}">{{task.name}}</div>
+                <div class="task-style {%if user_task.is_complete%}complete{%else%}uncomplete{%endif%}">
+                    {% if task.type2 == 'TEXT'%}
+                    <i class="fa-solid fa-pen-nib"></i>
+                    {% elif task.type2 == 'VIDEO'%}
+                    <i class="fa-solid fa-video"></i>
+                    {% elif task.type2 == 'READ'%}
+                    <i class="fa-solid fa-book"></i>
+                    {%endif%}
+                </div>
             </a>
             {%else%}
             <div class="task-style locked">{{task.name}}</div>

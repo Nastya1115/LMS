@@ -57,3 +57,18 @@
     transition: all 0.3s ease;
     color: black;
 }
+
+.search-form button:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 1000px) {
+    .group-container {
+        flex-direction: column;
+    }
+
+    .group-container span {
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+}

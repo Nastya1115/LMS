@@ -88,3 +88,46 @@
     border-radius: 3px;
     font-size: 12px;
 }
+
+.geometry-dash {
+    display: flex;
+    padding: 0 100px 0 100px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.c-container,
+.search-form input:hover {
+    transition: all 0.3s ease;
+}
+
+.c-container:hover,
+.search-form input:hover {
+    transform: scale(1.01);
+}
+
+@media (max-width: 1000px) {
+    .geometry-dash {
+        flex-direction: column;
+        padding: 0 10px 0 10px;
+    }
+
+    .search-form input {
+        width: 80% !important;
+        margin-bottom: 2%;
+    }
+
+    .search-form button {
+        margin-bottom: 5%;
+        width: 50%;
+        border-radius: 10px;
+    }
+
+    .search-form {
+        display: contents;
+    }
+
+    .courses-container {
+        gap: 25px;
+    }
+}

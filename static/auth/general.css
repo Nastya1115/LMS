@@ -80,3 +80,16 @@
         height:71vh;
         align-content: normal;
     }
+
+    .form-style input  {
+        width: auto;
+    }
+
+    .header {
+        font-size: 50px;
+    }
+
+    .sumbit-button {
+        width: 80%;
+    }
+}

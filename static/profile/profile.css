@@ -51,7 +51,7 @@
     width: 370px;
     padding: 15px;
     border-radius: 5px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .group-container h1, .group-container h3,
@@ -61,4 +61,15 @@
 
 .course-link:hover {
     letter-spacing: 2px;
+}
+
+@media (max-width: 1000px) {
+    .profile-avatar {
+        width: 150px;
+        height: 150px;
+    }
+
+    .course-link {
+        width: auto;
+    }
 }

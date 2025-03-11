@@ -25,7 +25,7 @@
     </div>
     <p class="global-text task-title">{{task.name}}</p>
     <p class="global-text task-desc">{{task.desc}}<br><br>{%if task.file%}<img src="{{task.file.url}}">{%endif%}</p>
-    <div style="display: flex;justify-content: space-between;">
+    <div class="skibidi">
     <button type="submit" class="green-btn">send</button>
     <button type="button" class="green-btn" data-bs-toggle="modal" data-bs-target="#modal{{task_user.id}}">
         teacher's comment

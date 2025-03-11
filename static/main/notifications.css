@@ -1,0 +1,35 @@
+.abc {
+    background-color: #6d7a59;
+    width:300px;
+    padding: 10px;
+    text-align: center;
+    justify-self: center;
+    border-radius: 10px;
+}
+
+.del-link {
+    text-decoration: none;
+    font-weight: 600;
+    color: black;
+    font-size: 20px;
+}
+
+.del-link:hover {
+    color:black;
+}
+
+.notif-container {
+    display: flex;
+    gap:25px;
+    width: 80%;
+    justify-self: center;
+    flex-wrap: wrap;
+}
+
+a {
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    letter-spacing: 1px;
+}

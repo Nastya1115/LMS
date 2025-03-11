@@ -59,7 +59,6 @@
     color: black;
     border-radius: 10px;
     width: 40vw;
-    align-items: center;
 }
 
 .form-inner-text {
@@ -107,4 +106,31 @@
 .sumbit-btn:hover {
     letter-spacing: 1.5px;
     background-color: #626e50;
+}
+
+.minecraft {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    justify-self: center;
+}
+
+@media (max-width: 1000px) {
+    .minecraft {
+        flex-direction: column;
+    }
+
+    .arrow {
+        transform: rotate(90deg);
+    }
+
+    .form-inner-container-file,
+    .form-inner-container-username,
+    .form-inner-container-bio {
+        flex-direction: column;
+    }
+
+    .form-inner-container-bio {
+        height: auto !important;
+    }
 }

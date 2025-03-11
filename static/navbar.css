@@ -14,17 +14,31 @@
     margin-right: 30px;
     transition: all 0.3s ease;
     text-decoration: none;
+    margin-top: 5px;
+}
+
+.nav-logo i {
+    padding: 15px 15px 15px 15px;
+    background-color: #6d7a59;
+    color: black;
+    border-radius: 50%;
+    text-align: center;
 }
 
 .nav-logo:hover {
-    font-size: 35.5px;
+    transform: scale(1.02);
+    letter-spacing: 0.5px;
 }
 
 .nav-text {
     font-weight: 500;
-    font-size: 20px;
+    font-size: 23px;
     transition: all 0.3s ease;
     text-decoration: none;
+}
+
+.nav-text:hover {
+    transform: translateY(-2px);
 }
 
 .nav-profile {
@@ -35,8 +49,74 @@
     display: flex;
     border: none;
     background-color: transparent;
+    margin-top: 5px;
+    align-items: center;
 }
 
-.nav-profile:hover {
-    font-size: 25.5px;
+.nav-profile:hover,
+.nav-profile:hover ~ .notif-avatar {
+    transform: scale(1.02);
+    letter-spacing: 0.5px;
+}
+
+.nav-profile:hover ~ .notif-avatar {
+    top: 4px;
+    right: -2px;
+}
+
+.navbar-avatar {
+    width: 65px;
+    height: 65px;
+    align-self: center;
+    margin-left: 5px;
+}
+
+.notif {
+    background-color: #79584c;
+    padding: 1px;
+    border-radius: 50%;
+    color: black;
+    float: right;
+    width: 20px;
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.notif-avatar {
+    position: absolute;
+    top: 5px;
+    right: -1px;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 1000px) {
+    .nav-logo span {
+        display: none;
+    }
+
+    .nav-text {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+
+    .nav-text span {
+        font-size: 10px;
+    }
+
+    .nav-profile span {
+        display: none;
+    }
+
+    .nav-logo {
+        font-size: 30px;
+    }
+
 }

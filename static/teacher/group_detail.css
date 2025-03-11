@@ -16,6 +16,7 @@
     background-color: transparent;
     color: #6d7a59;
     border: none;
+    transform: scale(1.05);
 }
 
 .nav-tabs .nav-link.active {
@@ -91,4 +92,21 @@
 .title-c a:hover,
 .students-list a:hover {
     letter-spacing: 0.7px;
+}
+
+.snowball {
+    display: flex;
+    gap:20px;
+    width: 90%;
+    justify-self: center;
+}
+
+@media (max-width: 1000px) {
+    .snowball {
+        flex-direction: column;
+    }
+    
+    .a {
+        width: auto;
+    }
 }

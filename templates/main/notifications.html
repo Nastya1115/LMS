@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+ 
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/notifications.css' %}">
+
+    {%if notifications%}
+    <div class="abc">
+        <a href="{%url 'delete_all_notification'%}" class="del-link">Delete all notifications</a>
+    </div><br>
+    <div class="notif-container">
+        {%for notification in notifications%}
+        <div class="c-container global-text" style="max-width: 400px;">
+            <a href="{%url 'delete_notification' notification.pk %}" class="global-text" style="float: right;"><i class="fa-solid fa-xmark"></i></a>
+            <h3>{{notification.text}}</h3>
+            <a href="{%url 'course_view' notification.sender.lesson.module.course.pk notification.sender.group.pk %}" class="global-text">go to lesson</a>
+        </div>
+        {%endfor%}
+    </div>
+    {%else%}
+    <h1 class="global-text" style="text-align: center;justify-self: center;">No new notifications :(</h1>
+    {%endif%}
+    
+
+{%endblock%}

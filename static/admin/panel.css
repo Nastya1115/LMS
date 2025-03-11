@@ -5,6 +5,10 @@
     font-weight: 700;
 }
 
+#myTabContent {
+    width: 80%;
+}
+
 .nav-tabs {
     border-bottom: none !important;
     border-radius: 5px;
@@ -22,6 +26,7 @@
 .nav-tabs .nav-link:hover {
     background-color: transparent;
     color: #6d7a59;
+    transform: scale(1.05);
 }
 
 .nav-tabs .nav-link.active {
@@ -105,6 +110,9 @@
     font-size: 25px;
     font-weight: 500;
     transition: all 0.3s ease;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .item-main-link:hover {
@@ -119,6 +127,11 @@
     padding-top: 4px;
     background-color: transparent;
     border: none;
+    transition: all 0.3s ease;
+}
+
+.item-secondary-link:hover {
+    transform: scale(1.2);
 }
 
 .ban-btn, .cancel-btn {
@@ -152,4 +165,55 @@
     background-color: #65483d;
     color: black;
     width: 160px;
+}
+
+.abobus {
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 1000px) {
+    .abobus {
+        flex-direction: column;
+        justify-self: center;
+        max-width: 80%;
+        gap: 30px
+    }
+
+    #myTab {
+        flex-direction: row !important;
+        justify-content: center;
+    }
+
+    .nav-tabs {
+        height: auto;
+    }
+
+    #myTabContent {
+        width: 100%;
+    }
+
+    .a {
+        width: 100%;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .search-form input{
+        width: auto;
+    }
+
+    .b {
+        width: 100%;
+    }
+
+    .id-circle {
+        font-size: 20px;
+        min-width: 40px;
+        height: 40px;
+    }
+
+    .tab-menu {
+        font-size: 18px;
+    }
 }
