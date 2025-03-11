@@ -3,4 +3,4 @@ def notifications(request):
     if current_user.is_authenticated:
         return {'notifications': current_user.notifications_user.all()}
     else:
-        return None
+        return {'notifications': []}
